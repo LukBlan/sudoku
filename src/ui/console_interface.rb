@@ -2,13 +2,19 @@ class ConsoleInterface
   def initialize(console_formatter, file_reader)
     @console_formatter = console_formatter
     @file_reader = file_reader
+    @board = nil
   end
 
-  def init
+  def init(board_factory)
     self.show_welcome_message("Welcome to Sudoku")
     self.show_available_files
     puts
+    self.generate_board(board_factory)
+  end
+
+  def generate_board(board_factory)
     file_name = get_file_from_user_input
+    @board = board_factory.create(@file_reader, file_name)
   end
 
   def show_welcome_message(message)
