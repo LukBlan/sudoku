@@ -4,9 +4,7 @@ class FileReader
   end
 
   def read_file(file_name)
-    File.readlines(file_name).each do |line|
-      puts(line)
-    end
+    File.readlines("#{@path_to_dir}/#{file_name}").map(&:chomp)
   end
 
   def get_available_files
