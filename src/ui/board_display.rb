@@ -1,3 +1,5 @@
+require 'colorize'
+
 class BoardDisplay
   def display_on_console(board, console_formatter)
     grid = board.grid
@@ -20,18 +22,22 @@ class BoardDisplay
       if index % 3 == 0
         print("|")
       end
-
-      if tile.value == 0
-        print("   ")
-      else
-        print(" #{tile.value} ")
-      end
+      tile_value = get_tile_value(tile)
+      print(" #{tile_value} ")
     end
 
     print("|")
   end
 
-  private
+  def get_tile_value(tile)
+    tile_value = tile.to_s
+
+    unless tile.is_given
+      tile_value = tile_value.colorize(:red)
+    end
+
+    tile_value
+  end
 
   def get_line(console_formatter, length)
     line = " "
