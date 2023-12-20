@@ -10,7 +10,13 @@ class ConsoleInterface
     self.show_available_files
     puts
     self.generate_board(board_factory)
+    self.game_loop(board_display)
+
+  end
+
+  def game_loop(board_display)
     board_display.display_on_console(@board, @console_formatter)
+
   end
 
   def generate_board(board_factory)

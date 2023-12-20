@@ -11,7 +11,7 @@ file_reader = FileReader.new("./../game-files")
 board_factory = BoardFactory.new
 
 # ui
-board_display = BoardDisplay.new
+board_display = BoardDisplay.new(:blue, :red)
 console_formatter = ConsoleFormatter.new(48)
 console_interface = ConsoleInterface.new(console_formatter, file_reader)
 console_interface.init(board_factory, board_display)
