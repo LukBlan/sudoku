@@ -4,7 +4,7 @@ class ConsoleFormatter
   end
 
   def display_message_between_dashes(message)
-    line = self.get_line
+    line = self.get_line(@line_length)
     message_in_middle = get_text_in_middle(message)
 
     puts(line)
@@ -16,9 +16,9 @@ class ConsoleFormatter
     puts("    #{message}")
   end
 
-  def get_line
+  def get_line(length)
     line = ""
-    @line_length.times { line += "-" }
+    length.times { line += "-" }
     line
   end
 

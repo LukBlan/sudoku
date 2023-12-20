@@ -5,11 +5,12 @@ class ConsoleInterface
     @board = nil
   end
 
-  def init(board_factory)
+  def init(board_factory, board_display)
     self.show_welcome_message("Welcome to Sudoku")
     self.show_available_files
     puts
     self.generate_board(board_factory)
+    board_display.display_on_console(@board, @console_formatter)
   end
 
   def generate_board(board_factory)
