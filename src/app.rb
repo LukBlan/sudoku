@@ -6,10 +6,10 @@ require_relative './domain/board/board_factory'
 # services
 file_reader = FileReader.new("./../game-files")
 
-# Domain
+# domain
 board_factory = BoardFactory.new
 
-# Ui
+# ui
 console_formatter = ConsoleFormatter.new(48)
 console_interface = ConsoleInterface.new(console_formatter, file_reader)
 console_interface.init(board_factory)
