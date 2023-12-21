@@ -1,8 +1,9 @@
 class ConsoleInterface
-  def initialize(console_formatter, file_reader)
+  def initialize(console_formatter, file_reader, user_input_getter)
     @console_formatter = console_formatter
     @file_reader = file_reader
     @board = nil
+    @user_input_getter = user_input_getter
   end
 
   def init(board_factory, board_display)
@@ -11,12 +12,18 @@ class ConsoleInterface
     puts
     self.generate_board(board_factory)
     self.game_loop(board_display)
-
+    puts("I am out")
+    board_display.display_on_console(@board, @console_formatter)
   end
 
   def game_loop(board_display)
-    board_display.display_on_console(@board, @console_formatter)
-
+    until @board.game_over?
+      system("clear")
+      board_display.display_on_console(@board, @console_formatter)
+      coordinates = @user_input_getter.get_coordinates(@board.length)
+      number = @user_input_getter.get_number(@board)
+      @board.mark_grid(coordinates, number)
+    end
   end
 
   def generate_board(board_factory)
