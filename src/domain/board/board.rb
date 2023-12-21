@@ -29,11 +29,11 @@ class Board
   end
 
   def numbers_in_ladder(row, hash_numbers)
-    row.each do |number|
-      hash_numbers[number] -= 1
+    row.each do |tile|
+      hash_numbers[tile.value] -= 1
     end
 
-    hash_numbers.all? { |numbers| numbers == 0 }
+    hash_numbers.all? { |key, values| values == 0 }
   end
 
   def get_hashed_numbers(grid_length)

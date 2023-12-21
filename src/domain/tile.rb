@@ -1,5 +1,5 @@
 class Tile
-  attr_reader :is_given
+  attr_reader :is_given, :value
 
   def initialize(value, is_given)
     @value = value

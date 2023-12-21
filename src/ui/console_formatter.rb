@@ -13,7 +13,7 @@ class ConsoleFormatter
   end
 
   def print_indent_message(message)
-    puts("    #{message}")
+    puts("    - #{message}")
   end
 
   def get_line(length)

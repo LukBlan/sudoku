@@ -17,11 +17,11 @@ class ConsoleInterface
   end
 
   def game_loop(board_display)
-    until @board.game_over?
+    while !@board.game_over?
       system("clear")
       board_display.display_on_console(@board, @console_formatter)
-      coordinates = @user_input_getter.get_coordinates(@board.length)
-      number = @user_input_getter.get_number(@board)
+      coordinates = @user_input_getter.get_coordinates(@board.length, @console_formatter)
+      number = @user_input_getter.get_number(@board.length, @console_formatter)
       @board.mark_grid(coordinates, number)
     end
   end
