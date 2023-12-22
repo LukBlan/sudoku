@@ -7,8 +7,8 @@ class Board
   end
 
   def mark_grid(coordinates, number)
-    column = coordinates[0].to_i - 1
-    row = coordinates[1].to_i - 1
+    column = coordinates[0]
+    row = coordinates[1]
     tile = Tile.new(number, false)
     @grid[column][row] = tile
   end

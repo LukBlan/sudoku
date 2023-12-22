@@ -7,6 +7,7 @@ class ConsoleInterface
   end
 
   def init(board_factory, board_display)
+    self.show_welcome_message("Welcome to Sudoku")
     self.show_available_files
     puts
     self.generate_board(board_factory)
@@ -24,7 +25,7 @@ class ConsoleInterface
     while !@board.game_over?
       system("clear")
       board_display.display_on_console(@board, @console_formatter)
-      coordinates = @user_input_getter.get_coordinates(@board.length, @console_formatter)
+      coordinates = @user_input_getter.get_coordinates(@board, @console_formatter)
       number = @user_input_getter.get_number(@board.length, @console_formatter)
       @board.mark_grid(coordinates, number)
     end
